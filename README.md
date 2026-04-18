@@ -20,6 +20,8 @@ This template exposes your OpenClaw gateway to the public internet.
 - Persistent state on Railway volume (`/data`)
 - Health endpoint at `/healthz`
 - Diagnostics and logs via setup tools + `/logs`
+- One-time first-boot runtime refresh (`openclaw update`)
+- OS-level `chromium` preinstalled for browser automation dependencies
 
 ## Quick Start (Railway)
 
@@ -61,6 +63,13 @@ This template exposes your OpenClaw gateway to the public internet.
 - Verify `/healthz` returns `{ "ok": true, ... }`
 - Open `/openclaw` via setup link
 - If using Telegram/Discord, approve pending devices from setup tools
+
+## First-Boot Runtime Tasks
+
+On the first boot of a fresh volume, the entrypoint runs:
+
+- `openclaw update` once (`/data/.openclaw/.openclaw-updated`)
+- `agent-browser install` once, if the command exists (`/data/.openclaw/.agent-browser-installed`)
 
 ## Chat Token Prep
 

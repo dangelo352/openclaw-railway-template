@@ -3,6 +3,7 @@ FROM node:22-bookworm
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ca-certificates \
+    chromium \
     curl \
     git \
     gosu \
@@ -12,7 +13,7 @@ RUN apt-get update \
     zip \
   && rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g openclaw@2026.3.13 clawhub@latest
+RUN npm install -g openclaw@latest clawhub@latest
 
 # Backward-compatibility shim for older OPENCLAW_ENTRY values.
 RUN mkdir -p /openclaw \
